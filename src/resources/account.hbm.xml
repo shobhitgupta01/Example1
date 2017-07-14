@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="com.shobhit.Account" table="bank">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="name" column="account_name" type="string"></property>
+		<property name="balance" column="account_balance" type="float"></property>
+	</class>
+</hibernate-mapping>
