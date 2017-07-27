@@ -3,11 +3,36 @@
 <head>
 
 <title>REST Web Service Page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
 </head>
 <body>
+<div ng-app="myApp" ng-controller="myCtrl">
 <h1>Rest Web Service</h1>
-<a href="http://localhost:8080/Example1/rest/app/accounts">Get Data</a>
-<a href="http://localhost:8080/Example1/user.html">Create New User</a>
-
+<button ng-click="getData()">Get Data</button>
+<!--  <a href="http://localhost:8080/Example1/user.html">Create New User</a> -->
+<table>
+	<tr>
+	<th>Name</th>
+	<th>Balance</th>
+	</tr>
+	<tr ng-repeat="x in myVal">
+		<td>{{x.name}}</td>
+		<td>{{x.balance}}</td>
+	</tr>
+</table>
+</div>
 </body>
+<script>
+	var app = angular.module("myApp",[]);
+	app.controller("myCtrl", function($scope,$http){
+		$scope.getData = function()
+		{
+			$http.get("http://localhost:8080/Example1/rest/app/accounts")
+			.then(function(response){
+				$scope.myVal=response.data;
+			});
+			
+		}
+	});
+</script>
 </html>

@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
 public class AccountHandler {
 	
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/accounts")
 	public List<Account> getAccounts()
 	{
@@ -53,13 +53,13 @@ public class AccountHandler {
 	 */
 	@POST
 	//@Produces(MediaType.TEXT_HTML)
-	//@Path("/create")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/create")
+	//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public void newAccount(@FormParam("name") String name,@FormParam("balance") float balance,@Context HttpServletResponse servletResponse)throws IOException
 	{
 		
 		
-		System.out.println("\n\nReceived "+name+" "+balance+" Chal jaa yaaaar\n\n");
+		System.out.println("\n\nReceived "+name+" "+balance+" \n\n");
 		Configuration cfg = new Configuration();
 		cfg.configure("/resources/hibernate.cfg.xml");
 		
